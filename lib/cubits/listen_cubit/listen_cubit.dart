@@ -1,20 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mitap_event_bus/cubits/counter_cubit/counter_cubit.dart';
+import 'package:mitap_event_bus/event_bus/event_bus.dart';
+import 'package:mitap_event_bus/events.dart';
 
 class ListenCubit extends Cubit<String> {
-  ListenCubit(this.counterCubit) : super('Start') {
-    subscription = counterCubit.stream.distinct(
-      (previous, next) {
-        return next.isOdd;
-      },
-    ).listen((event) {
-      emit("Число четное $event");
+  ListenCubit(this.eventBus) : super('Start') {
+    subscription = eventBus.on<CounterIsEven>().listen((event) {
+      emit(event.data);
     });
   }
 
-  final CounterCubit counterCubit;
+  final EventBus eventBus;
   late final StreamSubscription subscription;
 
   @override

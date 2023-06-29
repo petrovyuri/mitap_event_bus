@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mitap_event_bus/app_bloc_observer.dart';
 import 'package:mitap_event_bus/cubits/counter_cubit/counter_cubit.dart';
 import 'package:mitap_event_bus/cubits/listen_cubit/listen_cubit.dart';
+import 'package:mitap_event_bus/event_bus/event_bus.dart';
+
+EventBus eventBus = EventBus();
 
 void main() {
+  Bloc.observer = AppBlocObserver();
   runApp(const MaterialApp(home: Scaffold(body: App())));
 }
 
@@ -18,7 +23,7 @@ class App extends StatelessWidget {
           create: (context) => CounterCubit(),
         ),
         BlocProvider(
-          create: (context) => ListenCubit(context.read<CounterCubit>()),
+          create: (context) => ListenCubit(eventBus),
         ),
       ],
       child: _CounterScreenView(),
