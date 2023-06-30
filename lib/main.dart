@@ -5,7 +5,7 @@ import 'package:mitap_event_bus/cubits/listen_cubit/listen_cubit.dart';
 import 'package:mitap_event_bus/event_bus/app_bloc_observer.dart';
 
 void main() {
-  Bloc.observer = AppBlocObserver.instance;
+  Bloc.observer = AppBlocObserver();
   runApp(const MaterialApp(home: Scaffold(body: App())));
 }
 
