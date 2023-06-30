@@ -20,6 +20,6 @@ class ListenCubit extends Cubit<String> with BlocEventObserver {
 
   @override
   void onEventEmitted(Event event) {
-    emit("aasdasd");
+    emit(event.data.toString());
   }
 }

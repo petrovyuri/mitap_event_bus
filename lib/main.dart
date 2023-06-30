@@ -39,7 +39,7 @@ class _CounterScreenView extends StatelessWidget {
           BlocBuilder<ListenCubit, String>(
             builder: (context, state) {
               return Text(
-                state.toString(),
+                state,
                 style: Theme.of(context).textTheme.headlineMedium,
               );
             },
