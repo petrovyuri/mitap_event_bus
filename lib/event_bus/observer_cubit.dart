@@ -4,7 +4,7 @@ import 'package:mitap_event_bus/event_bus/event.dart';
 abstract class ObserverCubit<T> extends Cubit<T> {
   ObserverCubit(super.state);
 
-  void onEventEmitted(Event event);
+  void onEvent(Event event);
 
   List<Type> get observableEventTypes;
 }

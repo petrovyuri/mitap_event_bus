@@ -9,7 +9,7 @@ class ListenCubit extends ObserverCubit<String> {
   List<Type> get observableEventTypes => [CounterIsEven];
 
   @override
-  void onEventEmitted(Event event) {
+  void onEvent(Event event) {
     emit(event.data);
   }
 }

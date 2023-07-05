@@ -20,7 +20,7 @@ class AppBlocObserver extends BlocObserver {
     if (counter.isEven) {
       for (final observer in _observers) {
         if (observer.observableEventTypes.contains(CounterIsEven)) {
-          observer.onEventEmitted(CounterIsEven(counter));
+          observer.onEvent(CounterIsEven(counter));
         }
       }
     }
