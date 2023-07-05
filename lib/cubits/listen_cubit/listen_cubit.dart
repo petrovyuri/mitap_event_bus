@@ -7,6 +7,7 @@ class ListenCubit extends Cubit<String> {
   ListenCubit(this.counterCubit) : super('Start') {
     subscription = counterCubit.stream.distinct(
       (previous, next) {
+        // Пропустить если число НЕЧЕТНОЕ
         return next.isOdd;
       },
     ).listen((event) {
