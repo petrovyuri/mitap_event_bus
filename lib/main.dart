@@ -9,7 +9,12 @@ EventBus eventBus = EventBus();
 
 void main() {
   Bloc.observer = AppBlocObserver();
-  runApp(const MaterialApp(home: Scaffold(body: App())));
+  runApp(MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const App()));
 }
 
 class App extends StatelessWidget {
@@ -34,54 +39,45 @@ class App extends StatelessWidget {
 class _CounterScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Stack(
-        children: [
-          const SizedBox(height: 30),
-          BlocBuilder<ListenCubit, String>(
-            builder: (context, state) {
-              return Text(
-                state.toString(),
-                style: Theme.of(context).textTheme.headlineMedium,
-              );
-            },
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: 30),
-                BlocBuilder<CounterCubit, int>(
-                  builder: (context, state) {
-                    return Text(
-                      state.toString(),
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: ElevatedButton(
-              onPressed: () {
-                context.read<CounterCubit>().increment();
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => context.read<CounterCubit>().increment(),
+        child: const Icon(Icons.add),
+      ),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Stack(
+          children: [
+            const SizedBox(height: 30),
+            BlocBuilder<ListenCubit, String>(
+              builder: (context, state) {
+                return Text(
+                  state.toString(),
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
               },
-              child: const Icon(Icons.add),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: ElevatedButton(
-              onPressed: () {
-                context.read<CounterCubit>().decrement();
-              },
-              child: const Icon(Icons.remove),
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const SizedBox(height: 30),
+                  BlocBuilder<CounterCubit, int>(
+                    builder: (context, state) {
+                      return Text(
+                        state.toString(),
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
