@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mitap_event_bus/app_bloc_observer.dart';
 import 'package:mitap_event_bus/cubits/counter_cubit/counter_cubit.dart';
 import 'package:mitap_event_bus/cubits/listen_cubit/listen_cubit.dart';
 import 'package:mitap_event_bus/event_bus/event_bus.dart';
+import 'package:mitap_event_bus/events.dart';
 
 EventBus eventBus = EventBus();
 
 void main() {
-  Bloc.observer = AppBlocObserver();
   runApp(MaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -41,7 +40,13 @@ class _CounterScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<CounterCubit>().increment(),
+        onPressed: () {
+          context.read<CounterCubit>().increment();
+          final counter = context.read<CounterCubit>().state;
+          if (counter.isEven) {
+            eventBus.addEvent(CounterIsEven(counter));
+          }
+        },
         child: const Icon(Icons.add),
       ),
       appBar: AppBar(
