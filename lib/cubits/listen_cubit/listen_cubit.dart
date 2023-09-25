@@ -5,13 +5,10 @@ import 'package:mitap_event_bus/cubits/counter_cubit/counter_cubit.dart';
 
 class ListenCubit extends Cubit<String> {
   ListenCubit(this.counterCubit) : super('Start') {
-    subscription = counterCubit.stream.distinct(
-      (previous, next) {
-        // Пропустить если число НЕЧЕТНОЕ
-        return next.isOdd;
-      },
-    ).listen((event) {
-      emit("Число четное $event");
+    subscription = counterCubit.stream.listen((event) {
+      if (event.isEven) {
+        emit("Число четное $event");
+      }
     });
   }
 
