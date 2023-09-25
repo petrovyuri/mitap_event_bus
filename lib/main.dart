@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mitap_event_bus/cubits/counter_cubit/counter_cubit.dart';
 import 'package:mitap_event_bus/cubits/listen_cubit/listen_cubit.dart';
 import 'package:mitap_event_bus/event_bus/event_bus.dart';
-import 'package:mitap_event_bus/events.dart';
 
+import 'event_bus/event.dart';
+
+/// Создание экземпляра шины событий
 EventBus eventBus = EventBus();
 
 void main() {
@@ -42,6 +44,9 @@ class _CounterScreenView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           context.read<CounterCubit>().increment();
+
+          /// После каждой смены состояния счетчика, отправляем событие в шину
+          /// если счетчик четный
           final counter = context.read<CounterCubit>().state;
           if (counter.isEven) {
             eventBus.addEvent(CounterIsEven(counter));

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mitap_event_bus/event_bus/event.dart';
 import 'package:mitap_event_bus/event_bus/event_bus.dart';
-import 'package:mitap_event_bus/events.dart';
 
 class ListenCubit extends Cubit<String> {
   ListenCubit(this.eventBus) : super('Start') {
