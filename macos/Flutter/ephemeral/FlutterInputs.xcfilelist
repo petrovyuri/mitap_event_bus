@@ -47,6 +47,11 @@
 /Users/yura/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.5/LICENSE
 /Users/yura/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.5/assets/CupertinoIcons.ttf
 /Users/yura/.pub-cache/hosted/pub.dev/equatable-2.0.5/LICENSE
+/Users/yura/.pub-cache/hosted/pub.dev/equatable-2.0.5/lib/equatable.dart
+/Users/yura/.pub-cache/hosted/pub.dev/equatable-2.0.5/lib/src/equatable.dart
+/Users/yura/.pub-cache/hosted/pub.dev/equatable-2.0.5/lib/src/equatable_config.dart
+/Users/yura/.pub-cache/hosted/pub.dev/equatable-2.0.5/lib/src/equatable_mixin.dart
+/Users/yura/.pub-cache/hosted/pub.dev/equatable-2.0.5/lib/src/equatable_utils.dart
 /Users/yura/.pub-cache/hosted/pub.dev/fake_async-1.3.1/LICENSE
 /Users/yura/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.3/LICENSE
 /Users/yura/.pub-cache/hosted/pub.dev/flutter_bloc-8.1.3/lib/flutter_bloc.dart
@@ -780,5 +785,7 @@
 /Users/yura/dev/flutter/packages/flutter_tools/lib/src/build_system/targets/macos.dart
 /Users/yura/dev/friflex/mitap_event_bus/lib/cubits/counter_cubit/counter_cubit.dart
 /Users/yura/dev/friflex/mitap_event_bus/lib/cubits/listen_cubit/listen_cubit.dart
+/Users/yura/dev/friflex/mitap_event_bus/lib/event_bus/event.dart
+/Users/yura/dev/friflex/mitap_event_bus/lib/event_bus/event_bus.dart
 /Users/yura/dev/friflex/mitap_event_bus/lib/main.dart
 /Users/yura/dev/friflex/mitap_event_bus/pubspec.yaml
